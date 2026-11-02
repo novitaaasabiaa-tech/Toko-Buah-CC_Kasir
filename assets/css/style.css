@@ -1,0 +1,3354 @@
+/* CC KASIR - gaya utama. Tema hijau mengikuti logo Toko Buah CC. */
+:root{--side:#0B5A3A;--active:#2FA264;--primary:#1C8F57;--primary-d:#0F6B45;--bg:#F3F8F5;--card:#fff;--ink:#14281E;--mut:#6B7F74;--line:#E3ECE7;--tint:#E8F5EE;--warn:#E8890C;--bad:#E5484D;--shadow:0 4px 14px rgba(11,90,58,.07)}
+*{box-sizing:border-box;margin:0}html,body{min-height:100%}
+body{font-family:Poppins,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:13.5px}
+a{text-decoration:none;color:inherit}.muted{color:var(--mut)}.center{text-align:center}.right{margin-left:auto}.grow{flex:1}.flex{display:flex;gap:10px;align-items:center}.inline{display:inline-flex;gap:8px;align-items:center}.ik{width:18px;height:18px;flex-shrink:0}.stack{display:grid;gap:14px;min-width:0}
+
+/* Kerangka */
+.app{display:flex;min-height:100vh}
+aside{width:236px;background:linear-gradient(180deg,var(--side),#094A2F);color:#fff;padding:20px 14px;display:flex;flex-direction:column;gap:4px;flex-shrink:0;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;padding:0 6px 18px}.brand img{width:44px;height:44px;border-radius:50%;background:#fff}.brand b{font-size:17px;letter-spacing:.3px;display:block}.brand span{font-size:11px;opacity:.8}
+.nav{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;font-weight:500;color:rgba(255,255,255,.88)}.nav:hover{background:rgba(255,255,255,.1)}.nav.on{background:var(--active);color:#fff;font-weight:600}.nav.out{margin-top:auto}
+main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{display:flex;justify-content:flex-end;align-items:center;gap:26px;padding:12px 28px;background:var(--card);border-bottom:1px solid var(--line)}
+.tb-item{display:flex;align-items:center;gap:8px;color:var(--mut);font-size:12.5px}
+.user{display:flex;align-items:center;gap:10px}.user b{display:block;font-size:12.5px}.user small{color:var(--mut);font-size:11px}.avatar{width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:700}
+.page-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:22px 28px 0}.page-head h1{font-size:25px;font-weight:700}.sub{color:var(--mut);font-size:12.5px;margin-top:3px}.head-actions{display:flex;gap:10px;align-items:center}
+.view{padding:16px 28px 28px;display:grid;gap:16px}.row{display:grid;gap:16px}.c2{grid-template-columns:1fr 1fr}.c21{grid-template-columns:1.7fr 1fr}
+.split{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
+.note{color:var(--mut);font-size:12px;text-align:center;padding:14px 0 18px}
+
+/* Kartu, tombol, input */
+.card{background:var(--card);border-radius:14px;padding:18px;border:1px solid var(--line);box-shadow:var(--shadow)}.card h3{font-size:14.5px;font-weight:600;margin-bottom:12px}.pad-h{padding:18px 18px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:10px;font:inherit;font-weight:600;background:var(--primary);color:#fff;border:0;cursor:pointer}
+.btn:hover{background:var(--primary-d)}.btn.o{background:#fff;color:var(--primary);border:1.5px solid var(--primary)}.btn.danger{background:var(--bad)}.btn.danger:hover{background:#C93338}
+.btn.s{padding:6px 14px;font-size:12px;border-radius:8px}.btn.w{display:flex;width:100%}.btn.big{padding:14px;font-size:14.5px}.btn[disabled]{opacity:.45;cursor:not-allowed}
+.link-red{background:none;border:0;color:var(--bad);font:inherit;font-size:12px;font-weight:500;cursor:pointer}
+input,select{font:inherit;padding:10px 13px;border:1.5px solid var(--line);border-radius:10px;width:100%;background:#fff;color:var(--ink)}input:focus,select:focus{outline:2px solid #BFE4CF;border-color:var(--primary)}
+.lbl{display:grid;gap:6px;font-weight:600;font-size:12.5px}.form{display:grid;gap:14px;max-width:660px}.form.card{align-content:start}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.static{padding:10px 13px;border:1.5px dashed var(--line);border-radius:10px;font-weight:500}.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.alert{padding:11px 16px;border-radius:10px;font-weight:600;background:#FDE3E4;color:#B3262B}.alert.success{background:#DDF3E6;color:#14703F}.flash{margin:14px 28px 0}
+.tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.tools input[type=date]{width:auto}.pilih{width:auto;min-width:150px}
+.searchbar{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:0 14px;color:var(--mut)}.searchbar input{border:0;padding:10px 0;outline:0;background:none}.searchbar:focus-within{border-color:var(--primary)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{padding:7px 18px;border-radius:8px;background:#fff;border:1px solid var(--line);font:inherit;font-weight:600;font-size:12.5px;color:var(--mut);cursor:pointer}.tab.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+/* Tabel & lencana */
+table{width:100%;border-collapse:collapse}th{background:#F4F8F6;color:var(--ink);text-align:left;padding:12px 16px;font-size:12px;font-weight:600}td{padding:11px 16px;border-top:1px solid var(--line)}
+.tw{padding:0;overflow-x:auto}.tw h3{margin:0}.thumb{width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--tint)}tr.mati td{opacity:.55}
+.bd{padding:3px 12px;border-radius:6px;font-size:11.5px;font-weight:600;background:#EEE}.bd.ok{background:#DDF3E6;color:#14703F}.bd.lw{background:#FFF0D6;color:#B86A00}.bd.no{background:#FDE3E4;color:#B3262B}
+.legend-stok{display:flex;gap:22px;flex-wrap:wrap;font-size:12px;color:var(--mut)}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;background:#999}.dot.ok{background:var(--primary)}.dot.lw{background:var(--warn)}.dot.no{background:var(--bad)}
+.ln{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;gap:12px}.ln.b{font-weight:700;border-top:1.5px dashed var(--line);margin-top:6px;padding-top:10px}
+
+/* Dashboard */
+.hero{border-radius:16px;min-height:132px;background:#0F6B45 center/cover no-repeat;color:#fff;display:flex;align-items:center;gap:16px;padding:0 28px;overflow:hidden}.hero-logo{width:56px;height:56px;border-radius:50%;background:#fff}.hero h2{font-size:28px;font-weight:700}.hero p{opacity:.92;font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat{display:flex;gap:14px;align-items:center;padding:16px}.stat small{display:block;color:var(--mut);font-size:11.5px}.stat b{display:block;font-size:20px;line-height:1.35}.stat b.bad{color:var(--bad)}
+.si{width:42px;height:42px;border-radius:50%;background:var(--tint);color:var(--primary);display:grid;place-items:center;flex-shrink:0}.si.warn{background:#FDE3E4;color:var(--bad)}.si .ik{width:20px;height:20px}
+.tr{font-size:11px;font-weight:500}.tr.up{color:var(--primary)}.tr.down{color:var(--bad)}.tr.flat{color:var(--mut)}
+.chart{display:grid;grid-template-columns:62px 1fr;gap:6px;height:236px}.yaxis{display:flex;flex-direction:column;justify-content:space-between;padding-bottom:26px;text-align:right;font-size:11px;color:var(--mut)}
+.plot{display:flex;flex-direction:column;min-width:0}.bars-inner{flex:1;display:flex;align-items:flex-end;gap:16px;padding:0 12px;border-bottom:1px solid var(--line);background-image:linear-gradient(var(--line) 1px,transparent 1px);background-size:100% 33.333%}
+.bar{flex:1;background:var(--primary);border-radius:4px 4px 0 0;min-height:2px}.xlabels{display:flex;gap:16px;padding:7px 12px 0;height:26px}.xlabels span{flex:1;text-align:center;font-size:11px;color:var(--mut)}
+.top-item{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line)}.top-item:first-of-type{border-top:0}.top-item img{width:30px;height:30px;border-radius:50%;object-fit:cover}.top-item span{flex:1}
+
+/* Laporan */
+.filters{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.datebox{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:0 12px;color:var(--mut)}.datebox input{border:0;padding:9px 0;width:130px;outline:0}.datebox i{font-style:normal}
+.linechart{width:100%;height:auto}.gl{stroke:var(--line);stroke-width:1}.gt{font-size:10px;fill:var(--mut)}.gline{fill:none;stroke:var(--primary);stroke-width:2.2;stroke-linejoin:round}.gdot{fill:#fff;stroke:var(--primary);stroke-width:2}
+.donut-box{display:flex;align-items:center;gap:22px;flex-wrap:wrap}.donut{width:170px;height:170px;transform:rotate(0deg)}.dt{font-size:3.3px;font-weight:700;fill:var(--ink)}.legend-donut{display:grid;gap:8px;font-size:12.5px}.legend-donut .dot{margin-right:8px}
+
+/* Kasir */
+.kasir-grid{display:grid;grid-template-columns:1fr 390px;gap:18px;align-items:start}.kasir-left{display:grid;gap:14px;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.prod{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 10px 12px;text-align:center;cursor:pointer;position:relative;transition:.12s}.prod:hover{border-color:var(--primary);box-shadow:var(--shadow);transform:translateY(-1px)}
+.prod img{width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 10px;background:var(--tint)}.prod b{display:block;font-size:13px}.prod small{color:var(--mut);font-size:11.5px}
+.prod.habis{opacity:.5;cursor:not-allowed}.prod.habis:hover{border-color:var(--line);box-shadow:none;transform:none}.tag-habis{position:absolute;top:8px;right:8px;background:var(--bad);color:#fff;font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:6px}
+.cart{padding:18px;position:sticky;top:12px}.cart-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.cart-top h3{margin:0}
+.chead,.crow{display:grid;grid-template-columns:1.5fr .9fr 1.15fr .95fr;gap:8px;align-items:center}.chead{font-size:11.5px;color:var(--mut);padding:8px 0;border-bottom:1px solid var(--line);font-weight:600}
+.crow{padding:10px 0;border-bottom:1px solid var(--line);font-size:12px}.c-prod{display:flex;align-items:center;gap:8px;font-weight:600}.c-prod img{width:28px;height:28px;border-radius:50%;object-fit:cover}.c-sub{text-align:right;font-weight:600}.kosong{padding:20px 0}
+.step{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;overflow:hidden;width:max-content}.step button{width:24px;height:26px;border:0;background:#F4F8F6;cursor:pointer;font-size:14px;color:var(--ink)}.step input{width:42px;border:0;border-radius:0;padding:4px 2px;text-align:center;font-size:12px}
+.sum.total{display:flex;justify-content:space-between;font-size:20px;font-weight:700;margin:14px 0 6px}.cart h4{font-size:13px;margin:12px 0 8px}
+.segs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.seg{border:1.5px solid var(--line);border-radius:8px;padding:9px;text-align:center;cursor:pointer;font-weight:600;font-size:12.5px;color:var(--mut)}.seg input{display:none}.seg.on{background:var(--primary);border-color:var(--primary);color:#fff}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}.rp{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:10px;padding-left:12px;background:#fff}.rp i{font-style:normal;color:var(--mut);font-size:12.5px}.rp input{border:0;padding:10px 10px 10px 6px;outline:0}
+.kembali{background:var(--tint);border:1px solid #BFE4CF;border-radius:10px;padding:10px 14px;font-weight:700;color:var(--primary-d)}
+
+/* Struk */
+.struk{max-width:460px;margin:0 auto;width:100%}.struk h2{text-align:center;color:var(--primary-d)}.struk .okc{width:58px;height:58px;border-radius:50%;background:var(--tint);color:var(--primary);display:grid;place-items:center;font-size:30px;margin:0 auto 10px}.struk .btnrow{justify-content:center;margin-top:18px}
+
+/* Unggah foto produk */
+.foto-box{display:flex;gap:14px;align-items:center}.foto-preview{width:120px;height:90px;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:var(--tint)}
+.hint{display:block;margin-top:6px;font-size:12px;font-weight:400;color:var(--mut)}input[type=file]{padding:8px}
+
+/* Login */
+.login{display:grid;grid-template-columns:1.05fr 1fr;min-height:100vh}.lf{background:linear-gradient(165deg,#0F6B45,#094A2F);color:#fff;display:grid;place-content:center;text-align:center;gap:12px;padding:30px}
+.lf img{width:210px;border-radius:50%;background:#fff;margin:auto;box-shadow:0 14px 34px rgba(0,0,0,.28)}.lf h2{font-size:30px;font-weight:700}.lf p{opacity:.9}
+.lr{display:grid;place-content:center;padding:30px;background:var(--bg)}.lr form{width:min(380px,86vw);display:grid;gap:14px}.lr h1{color:var(--primary-d);font-size:27px}.lr label{font-weight:600;font-size:12.5px;display:grid;gap:6px}
+
+@media (max-width:1100px){.stats{grid-template-columns:repeat(2,1fr)}.kasir-grid,.split,.c21,.c2{grid-template-columns:1fr}.cart{position:static}}
+@media (max-width:900px){aside{display:none}.login,.two{grid-template-columns:1fr}.lf{display:none}.grid{grid-template-columns:repeat(2,1fr)}.view{padding:14px}.topbar{justify-content:space-between}}
+@media print{aside,.topbar,.noprint,.flash,.note,.head-actions{display:none!important}.view{padding:0}.card{box-shadow:none}body{background:#fff}.page-head{padding:0 0 10px}}
+
+
+/* Sidebar CC KASIR */
+aside {
+    width: 236px;
+    min-width: 236px;
+    padding: 20px 14px;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav {
+    min-height: 42px;
+    transition: background .2s ease;
+}
+
+.nav.on {
+    background: #2FA264;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .08);
+}
+
+.brand {
+    margin-bottom: 12px;
+}
+
+.brand img {
+    object-fit: contain;
+}
+
+@media (max-width: 900px) {
+    aside {
+        display: flex;
+        width: 190px;
+        min-width: 190px;
+        height: auto;
+        min-height: 100vh;
+        position: sticky;
+    }
+
+    .app {
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 600px) {
+    aside {
+        width: 65px;
+        min-width: 65px;
+        padding: 14px 8px;
+    }
+
+    .brand {
+        justify-content: center;
+        padding: 0 0 18px;
+    }
+
+    .brand img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .brand div,
+    .nav span {
+        display: none;
+    }
+
+    .nav {
+        justify-content: center;
+        padding: 11px 5px;
+    }
+}
+
+/* Mengecilkan ukuran sidebar CC KASIR */
+aside {
+    width: 190px;
+    min-width: 190px;
+    padding: 16px 10px;
+}
+
+.brand {
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.brand img {
+    width: 38px;
+    height: 38px;
+}
+
+.brand b {
+    font-size: 15px;
+}
+
+.brand span {
+    font-size: 10px;
+}
+
+.nav {
+    min-height: 36px;
+    padding: 8px 10px;
+    gap: 9px;
+    font-size: 13px;
+}
+
+.nav svg {
+    width: 17px;
+    height: 17px;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Ukuran ikon sidebar */
+.nav svg {
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0;
+}
+
+.nav img {
+    width: 14px !important;
+    height: 14px !important;
+    object-fit: contain;
+}
+
+/* Perbaikan banner Dashboard */
+.hero {
+    min-height: 150px;
+    height: 150px;
+    padding: 16px 24px;
+    gap: 18px;
+    border-radius: 14px;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Ukuran logo di dalam banner */
+.hero-logo,
+.hero img {
+    width: 75px;
+    height: 75px;
+    max-width: 75px;
+    max-height: 75px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+/* Tulisan banner */
+.hero h2 {
+    font-size: 23px;
+    margin-bottom: 5px;
+}
+
+.hero p {
+    font-size: 13px;
+}
+
+/* HERO DASHBOARD CC KASIR */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    min-height: 190px;
+    padding: 30px 40px;
+    border-radius: 18px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #245c3a;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Lapisan gelap transparan */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(15, 55, 32, 0.88),
+        rgba(15, 55, 32, 0.35)
+    );
+}
+
+/* Isi banner */
+.hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Logo */
+.hero-logo,
+.hero img {
+    width: 90px;
+    height: 90px;
+    max-width: 90px;
+    max-height: 90px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #ffffff;
+    padding: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* Judul */
+.hero h2 {
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: #ffffff;
+}
+
+/* Slogan */
+.hero p {
+    font-size: 15px;
+    margin: 0;
+    color: #f0f8f0;
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+    .hero {
+        min-height: 145px;
+        padding: 22px 18px;
+        gap: 15px;
+        border-radius: 14px;
+    }
+
+    .hero-logo,
+    .hero img {
+        width: 65px;
+        height: 65px;
+        max-width: 65px;
+        max-height: 65px;
+    }
+
+    .hero h2 {
+        font-size: 21px;
+    }
+
+    .hero p {
+        font-size: 12px;
+    }
+}
+/* CC KASIR - gaya utama. Tema hijau mengikuti logo Toko Buah CC. */
+:root{--side:#0B5A3A;--active:#2FA264;--primary:#1C8F57;--primary-d:#0F6B45;--bg:#F3F8F5;--card:#fff;--ink:#14281E;--mut:#6B7F74;--line:#E3ECE7;--tint:#E8F5EE;--warn:#E8890C;--bad:#E5484D;--shadow:0 4px 14px rgba(11,90,58,.07)}
+*{box-sizing:border-box;margin:0}html,body{min-height:100%}
+body{font-family:Poppins,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:13.5px}
+a{text-decoration:none;color:inherit}.muted{color:var(--mut)}.center{text-align:center}.right{margin-left:auto}.grow{flex:1}.flex{display:flex;gap:10px;align-items:center}.inline{display:inline-flex;gap:8px;align-items:center}.ik{width:18px;height:18px;flex-shrink:0}.stack{display:grid;gap:14px;min-width:0}
+
+/* Kerangka */
+.app{display:flex;min-height:100vh}
+aside{width:236px;background:linear-gradient(180deg,var(--side),#094A2F);color:#fff;padding:20px 14px;display:flex;flex-direction:column;gap:4px;flex-shrink:0;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;padding:0 6px 18px}.brand img{width:44px;height:44px;border-radius:50%;background:#fff}.brand b{font-size:17px;letter-spacing:.3px;display:block}.brand span{font-size:11px;opacity:.8}
+.nav{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;font-weight:500;color:rgba(255,255,255,.88)}.nav:hover{background:rgba(255,255,255,.1)}.nav.on{background:var(--active);color:#fff;font-weight:600}.nav.out{margin-top:auto}
+main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{display:flex;justify-content:flex-end;align-items:center;gap:26px;padding:12px 28px;background:var(--card);border-bottom:1px solid var(--line)}
+.tb-item{display:flex;align-items:center;gap:8px;color:var(--mut);font-size:12.5px}
+.user{display:flex;align-items:center;gap:10px}.user b{display:block;font-size:12.5px}.user small{color:var(--mut);font-size:11px}.avatar{width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:700}
+.page-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:22px 28px 0}.page-head h1{font-size:25px;font-weight:700}.sub{color:var(--mut);font-size:12.5px;margin-top:3px}.head-actions{display:flex;gap:10px;align-items:center}
+.view{padding:16px 28px 28px;display:grid;gap:16px}.row{display:grid;gap:16px}.c2{grid-template-columns:1fr 1fr}.c21{grid-template-columns:1.7fr 1fr}
+.split{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
+.note{color:var(--mut);font-size:12px;text-align:center;padding:14px 0 18px}
+
+/* Kartu, tombol, input */
+.card{background:var(--card);border-radius:14px;padding:18px;border:1px solid var(--line);box-shadow:var(--shadow)}.card h3{font-size:14.5px;font-weight:600;margin-bottom:12px}.pad-h{padding:18px 18px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:10px;font:inherit;font-weight:600;background:var(--primary);color:#fff;border:0;cursor:pointer}
+.btn:hover{background:var(--primary-d)}.btn.o{background:#fff;color:var(--primary);border:1.5px solid var(--primary)}.btn.danger{background:var(--bad)}.btn.danger:hover{background:#C93338}
+.btn.s{padding:6px 14px;font-size:12px;border-radius:8px}.btn.w{display:flex;width:100%}.btn.big{padding:14px;font-size:14.5px}.btn[disabled]{opacity:.45;cursor:not-allowed}
+.link-red{background:none;border:0;color:var(--bad);font:inherit;font-size:12px;font-weight:500;cursor:pointer}
+input,select{font:inherit;padding:10px 13px;border:1.5px solid var(--line);border-radius:10px;width:100%;background:#fff;color:var(--ink)}input:focus,select:focus{outline:2px solid #BFE4CF;border-color:var(--primary)}
+.lbl{display:grid;gap:6px;font-weight:600;font-size:12.5px}.form{display:grid;gap:14px;max-width:660px}.form.card{align-content:start}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.static{padding:10px 13px;border:1.5px dashed var(--line);border-radius:10px;font-weight:500}.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.alert{padding:11px 16px;border-radius:10px;font-weight:600;background:#FDE3E4;color:#B3262B}.alert.success{background:#DDF3E6;color:#14703F}.flash{margin:14px 28px 0}
+.tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.tools input[type=date]{width:auto}.pilih{width:auto;min-width:150px}
+.searchbar{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:0 14px;color:var(--mut)}.searchbar input{border:0;padding:10px 0;outline:0;background:none}.searchbar:focus-within{border-color:var(--primary)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{padding:7px 18px;border-radius:8px;background:#fff;border:1px solid var(--line);font:inherit;font-weight:600;font-size:12.5px;color:var(--mut);cursor:pointer}.tab.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+/* Tabel & lencana */
+table{width:100%;border-collapse:collapse}th{background:#F4F8F6;color:var(--ink);text-align:left;padding:12px 16px;font-size:12px;font-weight:600}td{padding:11px 16px;border-top:1px solid var(--line)}
+.tw{padding:0;overflow-x:auto}.tw h3{margin:0}.thumb{width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--tint)}tr.mati td{opacity:.55}
+.bd{padding:3px 12px;border-radius:6px;font-size:11.5px;font-weight:600;background:#EEE}.bd.ok{background:#DDF3E6;color:#14703F}.bd.lw{background:#FFF0D6;color:#B86A00}.bd.no{background:#FDE3E4;color:#B3262B}
+.legend-stok{display:flex;gap:22px;flex-wrap:wrap;font-size:12px;color:var(--mut)}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;background:#999}.dot.ok{background:var(--primary)}.dot.lw{background:var(--warn)}.dot.no{background:var(--bad)}
+.ln{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;gap:12px}.ln.b{font-weight:700;border-top:1.5px dashed var(--line);margin-top:6px;padding-top:10px}
+
+/* Dashboard */
+.hero{border-radius:16px;min-height:132px;background:#0F6B45 center/cover no-repeat;color:#fff;display:flex;align-items:center;gap:16px;padding:0 28px;overflow:hidden}.hero-logo{width:56px;height:56px;border-radius:50%;background:#fff}.hero h2{font-size:28px;font-weight:700}.hero p{opacity:.92;font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat{display:flex;gap:14px;align-items:center;padding:16px}.stat small{display:block;color:var(--mut);font-size:11.5px}.stat b{display:block;font-size:20px;line-height:1.35}.stat b.bad{color:var(--bad)}
+.si{width:42px;height:42px;border-radius:50%;background:var(--tint);color:var(--primary);display:grid;place-items:center;flex-shrink:0}.si.warn{background:#FDE3E4;color:var(--bad)}.si .ik{width:20px;height:20px}
+.tr{font-size:11px;font-weight:500}.tr.up{color:var(--primary)}.tr.down{color:var(--bad)}.tr.flat{color:var(--mut)}
+.chart{display:grid;grid-template-columns:62px 1fr;gap:6px;height:236px}.yaxis{display:flex;flex-direction:column;justify-content:space-between;padding-bottom:26px;text-align:right;font-size:11px;color:var(--mut)}
+.plot{display:flex;flex-direction:column;min-width:0}.bars-inner{flex:1;display:flex;align-items:flex-end;gap:16px;padding:0 12px;border-bottom:1px solid var(--line);background-image:linear-gradient(var(--line) 1px,transparent 1px);background-size:100% 33.333%}
+.bar{flex:1;background:var(--primary);border-radius:4px 4px 0 0;min-height:2px}.xlabels{display:flex;gap:16px;padding:7px 12px 0;height:26px}.xlabels span{flex:1;text-align:center;font-size:11px;color:var(--mut)}
+.top-item{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line)}.top-item:first-of-type{border-top:0}.top-item img{width:30px;height:30px;border-radius:50%;object-fit:cover}.top-item span{flex:1}
+
+/* Laporan */
+.filters{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.datebox{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:0 12px;color:var(--mut)}.datebox input{border:0;padding:9px 0;width:130px;outline:0}.datebox i{font-style:normal}
+.linechart{width:100%;height:auto}.gl{stroke:var(--line);stroke-width:1}.gt{font-size:10px;fill:var(--mut)}.gline{fill:none;stroke:var(--primary);stroke-width:2.2;stroke-linejoin:round}.gdot{fill:#fff;stroke:var(--primary);stroke-width:2}
+.donut-box{display:flex;align-items:center;gap:22px;flex-wrap:wrap}.donut{width:170px;height:170px;transform:rotate(0deg)}.dt{font-size:3.3px;font-weight:700;fill:var(--ink)}.legend-donut{display:grid;gap:8px;font-size:12.5px}.legend-donut .dot{margin-right:8px}
+
+/* Kasir */
+.kasir-grid{display:grid;grid-template-columns:1fr 390px;gap:18px;align-items:start}.kasir-left{display:grid;gap:14px;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.prod{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 10px 12px;text-align:center;cursor:pointer;position:relative;transition:.12s}.prod:hover{border-color:var(--primary);box-shadow:var(--shadow);transform:translateY(-1px)}
+.prod img{width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 10px;background:var(--tint)}.prod b{display:block;font-size:13px}.prod small{color:var(--mut);font-size:11.5px}
+.prod.habis{opacity:.5;cursor:not-allowed}.prod.habis:hover{border-color:var(--line);box-shadow:none;transform:none}.tag-habis{position:absolute;top:8px;right:8px;background:var(--bad);color:#fff;font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:6px}
+.cart{padding:18px;position:sticky;top:12px}.cart-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.cart-top h3{margin:0}
+.chead,.crow{display:grid;grid-template-columns:1.5fr .9fr 1.15fr .95fr;gap:8px;align-items:center}.chead{font-size:11.5px;color:var(--mut);padding:8px 0;border-bottom:1px solid var(--line);font-weight:600}
+.crow{padding:10px 0;border-bottom:1px solid var(--line);font-size:12px}.c-prod{display:flex;align-items:center;gap:8px;font-weight:600}.c-prod img{width:28px;height:28px;border-radius:50%;object-fit:cover}.c-sub{text-align:right;font-weight:600}.kosong{padding:20px 0}
+.step{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;overflow:hidden;width:max-content}.step button{width:24px;height:26px;border:0;background:#F4F8F6;cursor:pointer;font-size:14px;color:var(--ink)}.step input{width:42px;border:0;border-radius:0;padding:4px 2px;text-align:center;font-size:12px}
+.sum.total{display:flex;justify-content:space-between;font-size:20px;font-weight:700;margin:14px 0 6px}.cart h4{font-size:13px;margin:12px 0 8px}
+.segs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.seg{border:1.5px solid var(--line);border-radius:8px;padding:9px;text-align:center;cursor:pointer;font-weight:600;font-size:12.5px;color:var(--mut)}.seg input{display:none}.seg.on{background:var(--primary);border-color:var(--primary);color:#fff}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}.rp{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:10px;padding-left:12px;background:#fff}.rp i{font-style:normal;color:var(--mut);font-size:12.5px}.rp input{border:0;padding:10px 10px 10px 6px;outline:0}
+.kembali{background:var(--tint);border:1px solid #BFE4CF;border-radius:10px;padding:10px 14px;font-weight:700;color:var(--primary-d)}
+
+/* Struk */
+.struk{max-width:460px;margin:0 auto;width:100%}.struk h2{text-align:center;color:var(--primary-d)}.struk .okc{width:58px;height:58px;border-radius:50%;background:var(--tint);color:var(--primary);display:grid;place-items:center;font-size:30px;margin:0 auto 10px}.struk .btnrow{justify-content:center;margin-top:18px}
+
+/* Unggah foto produk */
+.foto-box{display:flex;gap:14px;align-items:center}.foto-preview{width:120px;height:90px;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:var(--tint)}
+.hint{display:block;margin-top:6px;font-size:12px;font-weight:400;color:var(--mut)}input[type=file]{padding:8px}
+
+/* Login */
+.login{display:grid;grid-template-columns:1.05fr 1fr;min-height:100vh}.lf{background:linear-gradient(165deg,#0F6B45,#094A2F);color:#fff;display:grid;place-content:center;text-align:center;gap:12px;padding:30px}
+.lf img{width:210px;border-radius:50%;background:#fff;margin:auto;box-shadow:0 14px 34px rgba(0,0,0,.28)}.lf h2{font-size:30px;font-weight:700}.lf p{opacity:.9}
+.lr{display:grid;place-content:center;padding:30px;background:var(--bg)}.lr form{width:min(380px,86vw);display:grid;gap:14px}.lr h1{color:var(--primary-d);font-size:27px}.lr label{font-weight:600;font-size:12.5px;display:grid;gap:6px}
+
+@media (max-width:1100px){.stats{grid-template-columns:repeat(2,1fr)}.kasir-grid,.split,.c21,.c2{grid-template-columns:1fr}.cart{position:static}}
+@media (max-width:900px){aside{display:none}.login,.two{grid-template-columns:1fr}.lf{display:none}.grid{grid-template-columns:repeat(2,1fr)}.view{padding:14px}.topbar{justify-content:space-between}}
+@media print{aside,.topbar,.noprint,.flash,.note,.head-actions{display:none!important}.view{padding:0}.card{box-shadow:none}body{background:#fff}.page-head{padding:0 0 10px}}
+
+
+/* Sidebar CC KASIR */
+aside {
+    width: 236px;
+    min-width: 236px;
+    padding: 20px 14px;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav {
+    min-height: 42px;
+    transition: background .2s ease;
+}
+
+.nav.on {
+    background: #2FA264;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .08);
+}
+
+.brand {
+    margin-bottom: 12px;
+}
+
+.brand img {
+    object-fit: contain;
+}
+
+@media (max-width: 900px) {
+    aside {
+        display: flex;
+        width: 190px;
+        min-width: 190px;
+        height: auto;
+        min-height: 100vh;
+        position: sticky;
+    }
+
+    .app {
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 600px) {
+    aside {
+        width: 65px;
+        min-width: 65px;
+        padding: 14px 8px;
+    }
+
+    .brand {
+        justify-content: center;
+        padding: 0 0 18px;
+    }
+
+    .brand img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .brand div,
+    .nav span {
+        display: none;
+    }
+
+    .nav {
+        justify-content: center;
+        padding: 11px 5px;
+    }
+}
+
+/* Mengecilkan ukuran sidebar CC KASIR */
+aside {
+    width: 190px;
+    min-width: 190px;
+    padding: 16px 10px;
+}
+
+.brand {
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.brand img {
+    width: 38px;
+    height: 38px;
+}
+
+.brand b {
+    font-size: 15px;
+}
+
+.brand span {
+    font-size: 10px;
+}
+
+.nav {
+    min-height: 36px;
+    padding: 8px 10px;
+    gap: 9px;
+    font-size: 13px;
+}
+
+.nav svg {
+    width: 17px;
+    height: 17px;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Ukuran ikon sidebar */
+.nav svg {
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0;
+}
+
+.nav img {
+    width: 14px !important;
+    height: 14px !important;
+    object-fit: contain;
+}
+
+/* Perbaikan banner Dashboard */
+.hero {
+    min-height: 150px;
+    height: 150px;
+    padding: 16px 24px;
+    gap: 18px;
+    border-radius: 14px;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Ukuran logo di dalam banner */
+.hero-logo,
+.hero img {
+    width: 75px;
+    height: 75px;
+    max-width: 75px;
+    max-height: 75px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+/* Tulisan banner */
+.hero h2 {
+    font-size: 23px;
+    margin-bottom: 5px;
+}
+
+.hero p {
+    font-size: 13px;
+}
+
+/* HERO DASHBOARD CC KASIR */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    min-height: 190px;
+    padding: 30px 40px;
+    border-radius: 18px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #245c3a;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Lapisan gelap transparan */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(15, 55, 32, 0.88),
+        rgba(15, 55, 32, 0.35)
+    );
+}
+
+/* Isi banner */
+.hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Logo */
+.hero-logo,
+.hero img {
+    width: 90px;
+    height: 90px;
+    max-width: 90px;
+    max-height: 90px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #ffffff;
+    padding: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* Judul */
+.hero h2 {
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: #ffffff;
+}
+
+/* Slogan */
+.hero p {
+    font-size: 15px;
+    margin: 0;
+    color: #f0f8f0;
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+    .hero {
+        min-height: 145px;
+        padding: 22px 18px;
+        gap: 15px;
+        border-radius: 14px;
+    }
+
+    .hero-logo,
+    .hero img {
+        width: 65px;
+        height: 65px;
+        max-width: 65px;
+        max-height: 65px;
+    }
+
+    .hero h2 {
+        font-size: 21px;
+    }
+
+    .hero p {
+        font-size: 12px;
+    }
+}
+
+/* =================================
+   DASHBOARD - KARTU STATISTIK
+================================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.stats .stat {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+    padding: 22px 18px;
+    background: #ffffff;
+    border: 1px solid #e5eee8;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(15, 107, 69, 0.07);
+    transition: all 0.25s ease;
+}
+
+.stats .stat:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 9px 24px rgba(15, 107, 69, 0.13);
+    border-color: #a8d8bd;
+}
+
+/* Ikon statistik */
+.stats .stat .si {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: #e5f5eb;
+    color: #0f6b45;
+    font-size: 23px;
+}
+
+/* Teks statistik */
+.stats .stat small {
+    display: block;
+    color: #718078;
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+.stats .stat h3,
+.stats .stat strong {
+    color: #183d2b;
+    font-size: 23px;
+    font-weight: 800;
+    margin: 0;
+}
+
+/* Tampilan tablet */
+@media (max-width: 1100px) {
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .stats .stat {
+        padding: 17px;
+    }
+}
+
+/* =================================
+   CC KASIR - STATISTIK DASHBOARD
+================================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin: 24px 0;
+}
+
+.stats .stat {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 18px;
+    background: #ffffff;
+    border: 1px solid #e3eee7;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(15, 107, 69, 0.06);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.stats .stat:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 9px 22px rgba(15, 107, 69, 0.12);
+}
+
+/* Ikon */
+.stats .stat .si {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: #e7f5ec;
+    color: #0f6b45;
+}
+
+/* Ikon stok menipis */
+.stats .stat .si.warn {
+    background: #fff2df;
+    color: #d88919;
+}
+
+/* Judul kartu */
+.stats .stat small {
+    display: block;
+    color: #718078;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
+/* Angka utama */
+.stats .stat b {
+    display: block;
+    color: #174b32;
+    font-size: 23px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+/* Keterangan tambahan */
+.stats .stat .tr {
+    display: inline-block;
+    margin-top: 7px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.stats .stat .tr.up {
+    color: #159447;
+}
+
+.stats .stat .tr.down {
+    color: #dc5555;
+}
+
+.stats .stat .tr.flat {
+    color: #87938c;
+}
+
+/* Angka stok bermasalah */
+.stats .stat b.bad {
+    color: #dc5555;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .stats .stat {
+        padding: 18px;
+    }
+}
+
+/* =================================
+   DASHBOARD - GRAFIK PENJUALAN
+================================= */
+
+.row.c21 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-top: 24px;
+    align-items: stretch;
+}
+
+.row.c21 > .card {
+    background: #ffffff;
+    border: 1px solid #e5eee8;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 15px rgba(15, 107, 69, .06);
+}
+
+.row.c21 h3 {
+    color: #174b32;
+    font-size: 17px;
+    font-weight: 750;
+    margin: 0 0 24px;
+}
+
+/* Area grafik */
+.chart {
+    display: flex;
+    gap: 12px;
+    height: 230px;
+}
+
+.yaxis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #849188;
+    font-size: 10px;
+    padding-bottom: 24px;
+    text-align: right;
+}
+
+.plot {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+}
+
+.bars-inner {
+    height: calc(100% - 24px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 12px;
+    border-bottom: 1px solid #e5eee8;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 24%,
+        #edf3ef 25%
+    );
+}
+
+.bar {
+    width: 32px;
+    max-width: 55px;
+    min-height: 3px;
+    background: linear-gradient(180deg, #39a96b, #0f6b45);
+    border-radius: 7px 7px 0 0;
+    transition: height .3s ease, opacity .2s ease;
+}
+
+.bar:hover {
+    opacity: .7;
+}
+
+.xlabels {
+    height: 24px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #849188;
+    font-size: 11px;
+}
+
+/* =================================
+   DASHBOARD - PRODUK TERLARIS
+================================= */
+
+.top-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #edf2ee;
+}
+
+.top-item:last-child {
+    border-bottom: none;
+}
+
+.top-item img {
+    width: 43px;
+    height: 43px;
+    border-radius: 11px;
+    object-fit: cover;
+    background: #e7f5ec;
+}
+
+.top-item span {
+    flex: 1;
+    min-width: 0;
+    color: #344b3d;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.top-item b {
+    color: #0f6b45;
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.row.c21 .muted {
+    color: #849188;
+    font-size: 13px;
+}
+
+/* Tampilan tablet dan HP */
+@media (max-width: 850px) {
+    .row.c21 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .row.c21 > .card {
+        padding: 16px;
+    }
+
+    .chart {
+        height: 190px;
+    }
+
+    .bars-inner {
+        gap: 7px;
+    }
+
+    .bar {
+        width: 23px;
+    }
+}
+
+/* =================================
+   CC KASIR - SIDEBAR MODERN
+================================= */
+
+.app aside .nav svg {
+    width: 21px;
+    height: 21px;
+    min-width: 21px;
+    color: #DCEBDD;
+    stroke-width: 2;
+    transition: all 0.2s ease;
+}
+
+.app aside .nav.on svg {
+    color: #183D27;
+    stroke-width: 2.4;
+}
+
+/* Logo dan identitas */
+.app aside .brand {
+    padding: 24px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.app aside .brand img {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #ffffff;
+    padding: 3px;
+}
+
+.app aside .brand b {
+    display: block;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: .5px;
+}
+
+.app aside .brand span {
+    display: block;
+    color: #b9d8c5;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+/* Daftar menu */
+.app aside .sidebar-menu {
+    padding: 20px 12px;
+}
+
+.app aside .nav {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 12px 15px;
+    margin-bottom: 7px;
+    border-radius: 10px;
+    color: #d7e9de;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+.app aside .nav:hover {
+    background: rgba(255,255,255,.10);
+    color: #ffffff;
+    transform: translateX(3px);
+}
+
+.app aside .nav.on {
+    background: #dff2e5;
+    color: #145c38;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.app aside .nav svg {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+}
+
+/* Bagian bawah sidebar */
+.app aside .sidebar-bottom {
+    padding: 15px 12px;
+    border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.app aside .sidebar-bottom .nav.out {
+    color: #ffb8b8;
+}
+
+.app aside .sidebar-bottom .nav.out:hover {
+    background: rgba(220, 70, 70, .16);
+    color: #ffffff;
+}
+
+/* =================================
+   CC KASIR - NAVBAR ATAS
+================================= */
+
+.app main .topbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e8eee9;
+    padding: 15px 24px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.025);
+}
+
+.app main .tb-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #65766b;
+    font-size: 12px;
+}
+
+.app main .tb-item svg {
+    color: #16804d;
+    width: 17px;
+    height: 17px;
+}
+
+/* Profil pengguna */
+.app main .user {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.app main .avatar {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #e2f3e8;
+    color: #12633c;
+    font-weight: 800;
+}
+
+.app main .user b {
+    display: block;
+    color: #244b35;
+    font-size: 12px;
+}
+
+.app main .user small {
+    display: block;
+    color: #8a968e;
+    font-size: 10px;
+    margin-top: 3px;
+}
+
+/* Judul halaman */
+.app main .page-head {
+    padding: 22px 24px;
+}
+
+.app main .page-head h1 {
+    color: #174b32;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.app main .page-head .sub {
+    color: #829087;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+    .app main .topbar {
+        padding: 12px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .app main .page-head {
+        padding: 18px 14px;
+    }
+}
+
+
+/* =================================
+   CC KASIR - HALAMAN KASIR
+================================= */
+
+.kasir-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr);
+    gap: 22px;
+    align-items: start;
+}
+
+/* Pencarian produk */
+.kasir-left .searchbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+    background: #ffffff;
+    border: 1px solid #e2ebe5;
+    border-radius: 12px;
+    color: #16804d;
+    margin-bottom: 16px;
+}
+
+.kasir-left .searchbar input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #294b38;
+    font-size: 13px;
+}
+
+/* Filter kategori */
+.kasir-left .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 18px;
+}
+
+.kasir-left .tab {
+    padding: 9px 16px;
+    border: 1px solid #dce9e0;
+    border-radius: 20px;
+    background: #ffffff;
+    color: #537060;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.kasir-left .tab:hover,
+.kasir-left .tab.on {
+    background: #0f6b45;
+    border-color: #0f6b45;
+    color: #ffffff;
+}
+
+/* Daftar produk */
+.kasir-left .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.kasir-left .prod {
+    position: relative;
+    padding: 12px;
+    background: #ffffff;
+    border: 1px solid #e5eee8;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: .2s ease;
+    overflow: hidden;
+}
+
+.kasir-left .prod:hover {
+    transform: translateY(-4px);
+    border-color: #a8d8bd;
+    box-shadow: 0 7px 18px rgba(15,107,69,.10);
+}
+
+.kasir-left .prod img {
+    width: 100%;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 11px;
+    background: #f0f5f1;
+}
+
+.kasir-left .prod b {
+    display: block;
+    color: #244b35;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.kasir-left .prod small {
+    color: #0f8050;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.kasir-left .prod.habis {
+    opacity: .65;
+    cursor: not-allowed;
+}
+
+.kasir-left .tag-habis {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: #dc5555;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* Keranjang */
+.kasir-grid .cart {
+    position: sticky;
+    top: 20px;
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid #e4eee7;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(15,107,69,.07);
+}
+
+.cart .cart-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.cart .cart-top h3 {
+    color: #174b32;
+    font-size: 18px;
+    margin: 0;
+}
+
+.cart .link-red {
+    border: none;
+    background: transparent;
+    color: #d95353;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Judul kolom keranjang */
+.cart .chead {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr  .8fr 1fr;
+    gap: 5px;
+    padding: 11px 0;
+    border-bottom: 1px solid #e8eee9;
+    color: #819087;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* Total */
+.cart .sum.total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 18px;
+    padding: 17px;
+    border-radius: 12px;
+    background: #e8f5ec;
+    color: #174b32;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.cart .sum.total #cart-total {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/* Pembayaran */
+.cart h4 {
+    color: #244b35;
+    font-size: 14px;
+    margin: 22px 0 12px;
+}
+
+.cart .segs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 17px;
+}
+
+.cart .seg {
+    flex: 1;
+    padding: 11px;
+    border: 1px solid #dce9e0;
+    border-radius: 9px;
+    color: #536c5d;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.cart .seg.on {
+    border-color: #0f6b45;
+    background: #e8f5ec;
+    color: #0f6b45;
+    font-weight: 700;
+}
+
+.cart .pay-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.cart .lbl {
+    display: block;
+    color: #64766b;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.cart .rp,
+.cart .kembali {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 42px;
+    margin-top: 8px;
+    padding: 9px;
+    border: 1px solid #e1eae4;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #244b35;
+}
+
+.cart .rp i {
+    color: #849188;
+    font-size: 11px;
+    font-style: normal;
+}
+
+.cart .rp input {
+    width: 100%;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 12px;
+}
+
+.cart .kembali {
+    background: #f0f7f2;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+/* Tombol simpan */
+.cart .btn.big {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    background: #0f6b45;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.cart .btn.big:hover {
+    background: #0a5435;
+    transform: translateY(-2px);
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+    .kasir-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .kasir-grid .cart {
+        position: static;
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+    .kasir-left .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .kasir-left .prod img {
+        height: 95px;
+    }
+
+    .kasir-grid .cart {
+        padding: 16px;
+    }
+}
+
+
+/* BARIS PRODUK KERANJANG */
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr .8fr 1fr;
+    gap: 5px;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom: 1px solid #edf2ee;
+    font-size: 10px;
+}
+
+.cart-product b {
+    display: block;
+    color: #244b35;
+    font-size: 11px;
+}
+
+.cart-product small {
+    display: block;
+    color: #849188;
+    margin-top: 4px;
+}
+
+.cart-price {
+    color: #64766b;
+}
+
+.cart-qty {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cart-qty button {
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 6px;
+    background: #e7f5ec;
+    color: #0f6b45;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.cart-qty span {
+    font-weight: 700;
+    color: #244b35;
+}
+
+.cart-subtotal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.cart-subtotal b {
+    color: #0f6b45;
+    font-size: 10px;
+}
+
+.cart-hapus {
+    border: none;
+    background: transparent;
+    color: #d95353;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* STRUK CC KASIR */
+.struk {
+    max-width: 430px;
+    margin: 20px auto;
+    padding: 25px;
+    color: #222;
+}
+
+.struk-header {
+    text-align: center;
+}
+
+.struk-header img {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+}
+
+.struk-header h2 {
+    margin: 8px 0 3px;
+    color: #174b35;
+}
+
+.struk-header h3 {
+    margin: 12px 0;
+}
+
+.struk-header p,
+.struk-footer p {
+    margin: 3px 0;
+    font-size: 12px;
+}
+
+.struk-info {
+    font-size: 12px;
+}
+
+.struk-info p {
+    margin: 5px 0;
+}
+
+.garis {
+    border-top: 1px dashed #888;
+    margin: 12px 0;
+}
+
+.struk .ln {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 13px;
+}
+
+.struk .ln span:last-child {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.struk .ln small {
+    font-size: 11px;
+}
+
+.struk .ln.b {
+    font-weight: bold;
+}
+
+.struk-footer {
+    text-align: center;
+    margin: 18px 0;
+}
+
+/* CETAK THERMAL 58 MM */
+@media print {
+    @page {
+        size: 58mm auto;
+        margin: 2mm;
+    }
+
+    body {
+        width: 54mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+    }
+
+    .struk {
+        width: 54mm !important;
+        max-width: 54mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .struk-header img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .noprint,
+    aside,
+    .topbar,
+    .page-head {
+        display: none !important;
+    }
+
+    .app,
+    main,
+    .view {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+
+/* ==================================
+   DASHBOARD CC KASIR - SAGE GREEN
+================================== */
+
+.view {
+    padding: 24px;
+    background: #f5f7f2;
+}
+
+/* Banner */
+.hero {
+    min-height: 180px;
+    padding: 30px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    background-color: #dce9d9;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.hero-logo {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    background: white;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.hero h2 {
+    color: #294d36;
+    font-size: 27px;
+    margin: 0 0 8px;
+}
+
+.hero p {
+    color: #55735d;
+    margin: 0;
+}
+
+/* Statistik */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #e8eee5;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 15px rgba(48, 78, 53, .05);
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.stat .si {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: #e7f0e5;
+    color: #477451;
+    font-size: 22px;
+}
+
+.stat .si.warn {
+    background: #fff0d9;
+    color: #bd8430;
+}
+
+.stat small {
+    display: block;
+    color: #7b897c;
+    margin-bottom: 7px;
+}
+
+.stat b {
+    display: block;
+    color: #294d36;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.tr {
+    font-size: 12px;
+    color: #66846a;
+}
+
+.tr.down,
+.bad {
+    color: #d15e52;
+}
+
+.tr.up {
+    color: #4e9560;
+}
+
+.tr.flat {
+    color: #89958a;
+}
+
+/* Grafik dan produk terlaris */
+.row.c21 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.card h3 {
+    color: #355e45;
+    font-size: 17px;
+    margin: 0 0 24px;
+}
+
+.chart {
+    display: flex;
+    height: 240px;
+    gap: 12px;
+}
+
+.yaxis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #89958a;
+    font-size: 11px;
+    padding-bottom: 25px;
+}
+
+.plot {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.bars-inner {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 12px;
+    border-bottom: 1px solid #e5ebe2;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 24%,
+        #edf1ea 25%
+    );
+}
+
+.bar {
+    width: 35px;
+    max-width: 12%;
+    min-height: 3px;
+    border-radius: 7px 7px 0 0;
+    background: #91b596;
+    transition: .2s;
+}
+
+.bar:hover {
+    background: #426f4d;
+}
+
+.xlabels {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    color: #89958a;
+    font-size: 11px;
+}
+
+.top-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #edf1ea;
+}
+
+.top-item:last-child {
+    border-bottom: 0;
+}
+
+.top-item img {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: #f1f5ee;
+}
+
+.top-item span {
+    flex: 1;
+    color: #405b45;
+    font-size: 13px;
+}
+
+.top-item b {
+    color: #355e45;
+}
+
+.muted {
+    color: #89958a;
+}
+
+/* Tampilan HP dan tablet */
+@media (max-width: 1000px) {
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .row.c21 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .view {
+        padding: 14px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 20px;
+        min-height: 140px;
+    }
+
+    .hero-logo {
+        width: 65px;
+        height: 65px;
+    }
+
+    .hero h2 {
+        font-size: 20px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+}
+
+
+
+/* Tulisan Toko Buah CC pada banner */
+.hero h2 {
+    color: #183D27 !important;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.35);
+}
+
+.hero p {
+    color: #355E45 !important;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Tulisan banner putih */
+.hero h2 {
+    color: #FFFFFF !important;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.35);
+}
+
+.hero p {
+    color: #FFFFFF !important;
+    font-size: 15px;
+    font-weight: 600;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+/* =================================
+   SIDEBAR CC KASIR
+================================= */
+
+.app aside {
+    background: #244B35;
+    color: #FFFFFF;
+    border-right: none;
+    box-shadow: 3px 0 15px rgba(0,0,0,0.06);
+}
+
+/* Logo dan nama aplikasi */
+.app aside .brand {
+    padding: 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.app aside .brand img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #FFFFFF;
+    padding: 4px;
+}
+
+.app aside .brand b {
+    color: #FFFFFF;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.app aside .brand span {
+    color: #D5E5D7;
+    font-size: 12px;
+}
+
+/* Menu navigasi */
+.sidebar-menu {
+    padding: 20px 12px;
+}
+
+.app aside .nav {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px 15px;
+    margin-bottom: 7px;
+    border-radius: 10px;
+    color: #F4F8F3;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+.app aside .nav svg {
+    width: 20px;
+    height: 20px;
+    color: #FFFFFF;
+}
+
+.app aside .nav:hover {
+    background: rgba(255,255,255,0.13);
+    color: #FFFFFF;
+    transform: translateX(3px);
+}
+
+/* Menu aktif */
+.app aside .nav.on {
+    background: #91B596;
+    color: #183D27;
+    font-weight: 700;
+}
+
+.app aside .nav.on svg {
+    color: #183D27;
+}
+
+/* Bagian bawah sidebar */
+.sidebar-bottom {
+    padding: 15px 12px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.app aside .nav.out:hover {
+    background: #A94747;
+    color: #FFFFFF;
+}
+
+/* Bar atas */
+.app main .topbar {
+    background: #FFFFFF;
+    border-bottom: 1px solid #E8EEE5;
+}
+
+.app main .topbar .user b {
+    color: #294D36;
+}
+
+.app main .topbar .user small {
+    color: #829083;
+}
+
+.app main .topbar .avatar {
+    background: #E2EEE0;
+    color: #355E45;
+    font-weight: 700;
+}
+
+/* ===== HEADER DAN JUDUL HALAMAN ===== */
+
+.app main .topbar {
+    min-height: 68px;
+    padding: 12px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E6EDE6;
+}
+
+.app main .topbar .tb-item {
+    color: #55715D;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.app main .topbar .user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.app main .topbar .user b {
+    color: #244B35;
+    font-size: 13px;
+}
+
+.app main .topbar .user small {
+    display: block;
+    margin-top: 3px;
+    color: #829083;
+    font-size: 11px;
+}
+
+/* Judul halaman */
+
+.app main .page-head {
+    padding: 25px 28px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.app main .page-head h1 {
+    margin: 0;
+    color: #244B35;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.app main .page-head .sub {
+    margin-top: 6px;
+    color: #829083;
+    font-size: 13px;
+}
+
+/* Tampilan layar kecil */
+
+@media (max-width: 768px) {
+    .app main .topbar {
+        padding: 12px 16px;
+        gap: 12px;
+    }
+
+    .app main .page-head {
+        padding: 20px 16px;
+    }
+
+    .app main .page-head h1 {
+        font-size: 21px;
+    }
+}
+
+
+/* =================================
+   DESAIN HALAMAN KASIR CC KASIR
+================================= */
+
+.kasir-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(320px, 0.9fr);
+    gap: 22px;
+    align-items: start;
+}
+
+/* Area produk */
+.kasir-left {
+    min-width: 0;
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+    background: #FFFFFF;
+    border: 1px solid #E0E9DF;
+    border-radius: 12px;
+    color: #55715D;
+    margin-bottom: 18px;
+}
+
+.searchbar input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #294D36;
+    font-size: 14px;
+}
+
+.searchbar:focus-within {
+    border-color: #6F9878;
+    box-shadow: 0 0 0 3px rgba(111,152,120,.12);
+}
+
+/* Kategori */
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 20px;
+}
+
+.tabs .tab {
+    padding: 9px 17px;
+    border: 1px solid #DCE8DC;
+    border-radius: 30px;
+    background: #FFFFFF;
+    color: #55715D;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.tabs .tab:hover,
+.tabs .tab.on {
+    background: #315C40;
+    color: #FFFFFF;
+    border-color: #315C40;
+}
+
+/* Kartu produk */
+.kasir-left .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+    gap: 15px;
+}
+
+.kasir-left .prod {
+    position: relative;
+    padding: 12px;
+    background: #FFFFFF;
+    border: 1px solid #E7EDE6;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: .2s ease;
+    overflow: hidden;
+}
+
+.kasir-left .prod:hover {
+    transform: translateY(-4px);
+    border-color: #8EAF91;
+    box-shadow: 0 8px 20px rgba(36,75,53,.09);
+}
+
+.kasir-left .prod img {
+    width: 100%;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: #F1F5EF;
+    margin-bottom: 10px;
+}
+
+.kasir-left .prod b {
+    display: block;
+    color: #294D36;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.kasir-left .prod small {
+    color: #66816B;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.kasir-left .prod.habis {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+.tag-habis {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 9px;
+    background: #FCE8E8;
+    color: #A94444;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Keranjang */
+.kasir-grid .cart {
+    position: sticky;
+    top: 20px;
+    padding: 22px;
+    background: #FFFFFF;
+    border: 1px solid #E5ECE4;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(36,75,53,.06);
+}
+
+.cart-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.cart-top h3 {
+    margin: 0;
+    color: #244B35;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.link-red {
+    border: none;
+    background: transparent;
+    color: #B65353;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.chead {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 0.8fr 1fr;
+    gap: 5px;
+    padding: 11px 0;
+    border-bottom: 1px solid #E8EEE7;
+    color: #829083;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.sum.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 16px;
+    background: #EDF4EC;
+    border-radius: 11px;
+    color: #315C40;
+    font-weight: 800;
+}
+
+.cart h4 {
+    color: #294D36;
+    font-size: 15px;
+    margin: 20px 0 12px;
+}
+
+/* Metode pembayaran */
+.segs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 17px;
+}
+
+.seg {
+    flex: 1;
+    padding: 11px;
+    text-align: center;
+    border: 1px solid #DCE8DC;
+    border-radius: 9px;
+    color: #55715D;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.seg.on {
+    background: #EAF2E8;
+    border-color: #709778;
+    color: #315C40;
+    font-weight: 700;
+}
+
+/* Pembayaran */
+.pay-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.pay-grid .lbl {
+    display: block;
+    color: #55715D;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.rp {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 8px;
+    padding: 10px;
+    border: 1px solid #DCE8DC;
+    border-radius: 9px;
+}
+
+.rp i {
+    color: #829083;
+    font-style: normal;
+    font-size: 12px;
+}
+
+.rp input {
+    width: 100%;
+    min-width: 0;
+    border: none;
+    outline: none;
+    color: #294D36;
+    font-weight: 700;
+}
+
+.kembali {
+    margin-top: 8px;
+    padding: 11px 9px;
+    background: #F1F5EF;
+    border-radius: 9px;
+    color: #315C40;
+    font-weight: 800;
+}
+
+/* Tombol simpan transaksi */
+.cart .btn.big {
+    width: 100%;
+    min-height: 48px;
+    border: none;
+    border-radius: 10px;
+    background: #315C40;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.cart .btn.big:hover {
+    background: #244B35;
+    transform: translateY(-2px);
+}
+
+/* Tampilan tablet dan HP */
+@media (max-width: 900px) {
+    .kasir-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .kasir-grid .cart {
+        position: static;
+    }
+}
+
+@media (max-width: 480px) {
+    .kasir-left .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pay-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ===== ISI KERANJANG CC KASIR ===== */
+
+#cart-list {
+    margin-top: 8px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 0.9fr 1fr;
+    align-items: center;
+    gap: 6px;
+    padding: 15px 0;
+    border-bottom: 1px solid #EDF1EB;
+}
+
+.cart-product b {
+    display: block;
+    color: #294D36;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.cart-product small {
+    display: block;
+    margin-top: 5px;
+    color: #829083;
+    font-size: 11px;
+}
+
+.cart-price {
+    color: #66816B;
+    font-size: 11px;
+}
+
+.cart-qty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.cart-qty button {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #DCE8DC;
+    border-radius: 7px;
+    background: #EDF4EC;
+    color: #315C40;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.cart-qty button:hover {
+    background: #315C40;
+    color: #FFFFFF;
+}
+
+.cart-qty span {
+    min-width: 20px;
+    text-align: center;
+    color: #294D36;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.cart-subtotal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.cart-subtotal b {
+    color: #315C40;
+    font-size: 11px;
+}
+
+.cart-hapus {
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 6px;
+    background: #FCECEC;
+    color: #B65353;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.cart-hapus:hover {
+    background: #B65353;
+    color: #FFFFFF;
+}
+
+/* Keranjang kosong */
+#cart-list .muted {
+    padding: 35px 10px;
+    text-align: center;
+    color: #9AA69A;
+    font-size: 13px;
+}
+
+/* Scrollbar keranjang */
+#cart-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+#cart-list::-webkit-scrollbar-thumb {
+    background: #C9D9C9;
+    border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+    .cart-item {
+        grid-template-columns: 1.2fr 0.8fr 1fr;
+    }
+
+    .cart-price {
+        display: none;
+    }
+}
+
+/* BANNER DASHBOARD CC KASIR */
+.hero-banner {
+    min-height: 230px;
+    background-image: url('../images/banner-buah.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.hero-banner .hero-content {
+    color: #164b2b;
+}
+
+.hero-banner .hero-welcome {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 5px;
+}
+
+.hero-banner h2 {
+    font-size: 48px;
+    font-weight: 800;
+    margin: 0;
+    color: #164b2b;
+}
+
+.hero-banner .hero-slogan {
+    font-size: 27px;
+    font-weight: 700;
+    color: #fff;
+    background: #438b35;
+    display: inline-block;
+    padding: 8px 22px;
+    border-radius: 30px;
+    margin: 10px 0;
+}
+
+.hero-banner .hero-content span {
+    display: block;
+    font-size: 14px;
+    color: #164b2b;
+}
+
+/* Banner gambar Dashboard CC KASIR */
+.hero.hero-image {
+    padding: 0 !important;
+    height: 230px;
+    min-height: 230px;
+    overflow: hidden;
+    position: relative;
+    background: none !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.hero.hero-image::before,
+.hero.hero-image::after {
+    display: none !important;
+    content: none !important;
+}
+
+.hero.hero-image img {
+    display: block;
+    width: 100%;
+    height: 260%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* BANNER DASHBOARD CC KASIR */
+.view .hero.hero-image {
+    display: block !important;
+    width: 100% !important;
+    height: 260px !important;
+    min-height: 260px !important;
+    padding: 0 !important;
+    margin: 0 0 28px 0 !important;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    background: none !important;
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 8px 22px rgba(20, 65, 38, 0.10);
+}
+
+.view .hero.hero-image::before,
+.view .hero.hero-image::after {
+    content: none !important;
+    display: none !important;
+}
+
+.view .hero.hero-image .hero-logo {
+    display: none !important;
+}
+
+.view .hero.hero-image img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 18px;
+}
+
+@media (max-width: 768px) {
+    .view .hero.hero-image {
+        height: 160px !important;
+        min-height: 160px !important;
+    }
+}
+
+
+/* =====================================
+   PERBAIKAN DASHBOARD CC KASIR
+===================================== */
+
+/* Area utama dashboard */
+.view {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* Banner */
+.view > div:first-child {
+    width: 100%;
+    margin-bottom: 24px !important;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.view > div:first-child img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Kartu statistik */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.stat {
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Grafik dan produk terlaris */
+.row.c21 {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.row.c21 > .card {
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Grafik */
+.chart {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Produk terlaris */
+.top-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.top-item span {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .row.c21 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+    .view {
+        padding: 12px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .row.c21 {
+        gap: 14px;
+    }
+}
+
+
+/* =====================================
+   SIDEBAR CC KASIR
+===================================== */
+
+.app {
+    min-height: 100vh;
+}
+
+/* Sidebar utama */
+.app > aside {
+    width: 250px;
+    min-width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+/* Logo dan identitas */
+.brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    padding: 28px 15px 25px;
+}
+
+/* Gambar logo */
+.brand img {
+    display: block;
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+/* Tulisan CC KASIR */
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.brand-text b {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.brand-text span {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* Navigasi */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 10px 15px;
+}
+
+/* Link menu */
+.app aside .nav {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-height: 45px;
+    padding: 0 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: 0.2s ease;
+}
+
+/* Ikon */
+.app aside .nav svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Menu aktif */
+.app aside .nav.on {
+    background: #dce9df;
+    color: #285b3d;
+    font-weight: 700;
+}
+
+/* Efek hover */
+.app aside .nav:hover {
+    background: #e8f0e9;
+    color: #285b3d;
+}
+
+/* Menu bagian bawah */
+.sidebar-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 15px;
+    margin-top: auto;
+}
+
+/* Tombol keluar */
+.app aside .nav.out {
+    color: #b54747;
+}
+
+/* Area konten */
+.app > main {
+    min-width: 0;
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    box-sizing: border-box;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .app > aside {
+        width: 210px;
+        min-width: 210px;
+    }
+
+    .app > main {
+        margin-left: 210px;
+        width: calc(100% - 210px);
+    }
+}
+
+
+/* =====================================
+   PENGATURAN CC KASIR
+===================================== */
+
+.settings-page {
+    display: grid;
+    gap: 20px;
+}
+
+.settings-card {
+    padding: 24px;
+    border-radius: 14px;
+}
+
+.settings-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.settings-heading > svg {
+    width: 25px;
+    height: 25px;
+    color: var(--primary);
+}
+
+.settings-heading h3 {
+    font-size: 17px;
+    margin: 0;
+}
+
+.settings-heading p {
+    font-size: 12px;
+    color: var(--mut);
+    margin-top: 5px;
+}
+
+.settings-form {
+    display: grid;
+    gap: 18px;
+    max-width: 650px;
+}
+
+.settings-form .field {
+    display: grid;
+    gap: 8px;
+}
+
+.settings-form label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.settings-form input,
+.settings-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: var(--card);
+    color: var(--text);
+    font: inherit;
+    box-sizing: border-box;
+}
+
+.settings-form textarea {
+    resize: vertical;
+}
+
+.settings-actions {
+    margin-top: 22px;
+}
+
+.account-info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.account-info div {
+    display: grid;
+    gap: 7px;
+}
+
+.account-info small {
+    color: var(--mut);
+    font-size: 12px;
+}
+
+.account-info b {
+    font-size: 14px;
+}
+
+@media(max-width:600px) {
+    .account-info {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-card {
+        padding: 16px;
+    }
+}
+
+/* ==================================
+   STRUK THERMAL PRINTER 58 MM
+================================== */
+
+.struk {
+    width: 380px;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 22px;
+    background: #fff;
+    color: #111;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.struk-header {
+    text-align: center;
+}
+
+.struk-header img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.struk-header h2 {
+    font-size: 17px;
+    margin: 4px 0;
+    font-weight: 800;
+}
+
+.struk-header h3 {
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+.struk-header p,
+.struk-footer p {
+    margin: 4px 0;
+    font-size: 11px;
+}
+
+.garis {
+    border-top: 1px dashed #333;
+    margin: 10px 0;
+}
+
+.struk-info p {
+    margin: 5px 0;
+    font-size: 11px;
+}
+
+.ln {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 7px 0;
+    font-size: 11px;
+}
+
+.ln span:last-child {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.ln small {
+    display: inline-block;
+    margin-top: 3px;
+    font-size: 10px;
+}
+
+.ln.b {
+    font-weight: 800;
+}
+
+.struk-footer {
+    text-align: center;
+    margin-top: 14px;
+}
+
+.struk-footer b {
+    font-size: 13px;
+}
+
+.btnrow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+/* Pengaturan saat mencetak */
+@media print {
+    @page {
+        size: 58mm auto;
+        margin: 0;
+    }
+
+    html,
+    body {
+        width: 58mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+    }
+
+    .app {
+        display: block !important;
+        min-height: 0 !important;
+    }
+
+    .app > aside,
+    .topbar,
+    .page-head,
+    .noprint {
+        display: none !important;
+    }
+
+    main {
+        display: block !important;
+        width: 58mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .view {
+        display: block !important;
+        width: 58mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .struk {
+        width: 58mm !important;
+        max-width: 58mm !important;
+        margin: 0 !important;
+        padding: 3mm !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        font-size: 10px !important;
+    }
+
+    .struk-header img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .garis {
+        border-top: 1px dashed #000;
+    }
+
+    .ln {
+        font-size: 10px;
+    }
+
+    .ln small {
+        font-size: 9px;
+    }
+}
+
+/* Ukuran logo struk */
+.struk-header img {
+    width: 35px !important;
+    height: 35px !important;
+    object-fit: contain;
+    margin-bottom: 4px;
+}
+
+@media print {
+    .struk-header img {
+        width: 30px !important;
+        height: 30px !important;
+    }
+}
+.struk-header img {
+    display: block !important;
+    width: 25px !important;
+    height: 25px !important;
+    object-fit: contain;
+    margin: 0 auto 5px auto !important;
+}
+
+@media print {
+    .struk-header img {
+        width: 25px !important;
+        height: 25px !important;
+        margin: 0 auto 5px auto !important;
+    }
+}
+
+/* Preview logo pengaturan */
+.logo-preview {
+    width: 110px;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f7f5;
+    border: 1px dashed #b8c8bd;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.logo-preview img {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+}
+
+.settings-page .field input[type="file"] {
+    padding: 10px;
+    font-size: 12px;
+}
+
+.settings-page .field small {
+    display: block;
+    margin-top: 7px;
+    color: #777;
+    font-size: 11px;
+}
+
+.qty-input,
+input[data-qty] {
+    width: 85px !important;
+    min-width: 85px !important;
+    text-align: center;
+    padding: 8px 5px;
+    font-size: 14px;
+}
